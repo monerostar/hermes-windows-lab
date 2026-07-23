@@ -1,0 +1,63 @@
+# hermes-windows-lab
+
+Private learning lab for running [Hermes Agent](https://hermes-agent.nousresearch.com/) on Windows — notes, safe samples, and small scripts.
+
+**Owner:** [monerostar](https://github.com/monerostar)  
+**Visibility:** private for now (can flip public later once scrubbed and ready)  
+**Not this repo:** full Hermes profile backups, sessions, API keys, wallets, or live configs with secrets.
+
+## What this is
+
+A calm place to:
+
+- learn Git/GitHub with real Hermes-related work
+- document Windows multi-profile setup (main vs tech, etc.)
+- keep **sanitized** skill samples and helper scripts
+- build a portfolio-shaped project without dumping the whole machine
+
+## What this is not
+
+| Avoid here | Why |
+|------------|-----|
+| `HERMES_HOME` full copy | secrets + personal history |
+| `.env`, OAuth tokens, keyrings | credential leak risk |
+| xmrig configs with wallets/pools | privacy / security |
+| chat session databases | personal + bulky |
+
+Use a **separate private backup** flow for disaster recovery (see Trello: refresh `hermes-backup`). This lab stays readable and teachable.
+
+## Layout
+
+```text
+docs/               explainers (learning notes)
+scripts/            small helper scripts (no secrets)
+skills-samples/     optional scrubbed skill excerpts
+.gitignore          blocks common secret patterns
+```
+
+## Docs index
+
+1. [What is Hermes (for this lab)](docs/01-what-is-hermes.md)
+2. [Profiles: main vs tech](docs/02-profiles-main-vs-tech.md)
+3. [GitHub CLI setup on this machine](docs/03-github-cli-setup.md)
+4. [Safety: no secrets in git](docs/04-safety-no-secrets.md)
+5. [Backup vs lab (two different jobs)](docs/05-backup-vs-lab.md)
+
+## Quick git reminders
+
+```bash
+git status
+git add -A
+git commit -m "short description of what changed"
+git push
+```
+
+Commits on this account use:
+
+- `user.name` = monerostar
+- `user.email` = GitHub noreply (private)
+
+## Status
+
+- Skeleton created: 2026-07-23
+- First real content: setup docs from initial monerostar GitHub wiring

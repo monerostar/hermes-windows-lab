@@ -1,0 +1,46 @@
+# Secrets & env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credentials*
+*token*.json
+*secret*
+!.gitkeep
+
+# Hermes / agent runtime (never commit live profile)
+**/google_token.json
+**/google_client_secret.json
+**/auth.json
+**/.xurl
+**/state.db*
+**/sessions/
+**/memories/
+**/audio_cache/
+**/image_cache/
+**/cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python / node junk if experiments land here
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+dist/
+build/
+
+# Archives / dumps
+*.zip
+*.7z
+*.rar
+hermes-backup*
