@@ -6,7 +6,13 @@
 *.key
 *credentials*
 *token*.json
-*secret*
+# secret filenames / env-style dumps (do not use broad *secret* — blocks docs like *-no-secrets*)
+*.secret
+*.secrets
+secrets/
+.secrets/
+client_secret*.json
+*_client_secret.json
 !.gitkeep
 
 # Hermes / agent runtime (never commit live profile)
