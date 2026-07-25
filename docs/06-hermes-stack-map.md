@@ -1,7 +1,7 @@
 # Hermes Stack Map
 
 **Living systems portrait** of the multi-profile Hermes world on this Windows host.  
-**Visual:** [hermes-stack-map.html](./hermes-stack-map.html) (open in browser)  
+**Visual:** [hermes-stack-map.html](./hermes-stack-map.html) (open in browser · **animated** CSS/SVG; Pause motion toggle)  
 **Concept art:** [assets/hermes-stack-map-concept.png](./assets/hermes-stack-map-concept.png)  
 **Date:** 2026-07-25 · Option C from brainstorming session
 

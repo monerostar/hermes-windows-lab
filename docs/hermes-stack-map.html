@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hermes Stack Map — monerostar / Dustin</title>
+  <title>Hermes Stack Map (animated) — monerostar / Dustin</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'JetBrains Mono', monospace;
@@ -15,23 +16,159 @@
       color: white;
     }
     .container { max-width: 1280px; margin: 0 auto; }
-    .header { margin-bottom: 1.25rem; }
+    .header { margin-bottom: 1.25rem; animation: fadeDown 0.7s ease both; }
     .header-row { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.4rem; }
     .pulse-dot {
       width: 12px; height: 12px; background: #22d3ee; border-radius: 50%;
       animation: pulse 2s infinite; box-shadow: 0 0 12px rgba(34,211,238,0.5);
     }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.45} }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes softIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
     h1 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em; }
     .subtitle { color: #94a3b8; font-size: 0.82rem; margin-left: 1.75rem; line-height: 1.45; max-width: 56rem; }
+    .toolbar {
+      display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+      margin: 0.85rem 0 0 1.75rem;
+    }
+    .toolbar label {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; color: #94a3b8; cursor: pointer;
+      user-select: none; border: 1px solid #1e293b; border-radius: 999px;
+      padding: 0.28rem 0.7rem; background: rgba(15,23,42,0.6);
+    }
+    .toolbar input { accent-color: #22d3ee; }
     .diagram-container {
       background: rgba(15, 23, 42, 0.55);
       border-radius: 1rem;
       border: 1px solid #1e293b;
       padding: 1.1rem 1rem 0.75rem;
       overflow-x: auto;
+      animation: fadeUp 0.85s ease 0.15s both;
+      position: relative;
     }
-    svg { width: 100%; min-width: 1080px; display: block; }
+    .diagram-container::after {
+      content: "";
+      pointer-events: none;
+      position: absolute; inset: 0; border-radius: 1rem;
+      background: radial-gradient(800px 200px at 20% 0%, rgba(34,211,238,0.06), transparent 60%),
+                  radial-gradient(600px 220px at 80% 10%, rgba(167,139,250,0.05), transparent 55%);
+      animation: ambient 8s ease-in-out infinite alternate;
+    }
+    @keyframes ambient {
+      from { opacity: 0.55; }
+      to { opacity: 1; }
+    }
+    svg { width: 100%; min-width: 1080px; display: block; position: relative; z-index: 1; }
+
+    .flow {
+      stroke-dasharray: 5 9;
+      animation: flowDash 1.35s linear infinite;
+    }
+    .flow-slow {
+      stroke-dasharray: 6 10;
+      animation: flowDash 2.4s linear infinite;
+    }
+    .flow-reverse {
+      stroke-dasharray: 5 9;
+      animation: flowDashRev 1.8s linear infinite;
+    }
+    @keyframes flowDash {
+      to { stroke-dashoffset: -42; }
+    }
+    @keyframes flowDashRev {
+      to { stroke-dashoffset: 42; }
+    }
+
+    .node {
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: filter 0.35s ease, opacity 0.35s ease;
+    }
+    .node-glow-cyan { animation: glowCyan 3.2s ease-in-out infinite; }
+    .node-glow-emerald { animation: glowEmerald 3.6s ease-in-out infinite; }
+    .node-glow-violet { animation: glowViolet 3.4s ease-in-out infinite; }
+    .node-glow-amber { animation: glowAmber 3.8s ease-in-out infinite; }
+    .node-glow-orange { animation: glowOrange 3.1s ease-in-out infinite; }
+    .node-glow-rose { animation: glowRose 3.5s ease-in-out infinite; }
+    .node-glow-tech {
+      animation: glowCyan 2.8s ease-in-out infinite, breathe 4.5s ease-in-out infinite;
+    }
+    .node-glow-main {
+      animation: glowEmerald 2.8s ease-in-out infinite, breathe 5s ease-in-out infinite;
+    }
+    .node-glow-balanced {
+      animation: glowViolet 2.4s ease-in-out infinite, breathe 3.8s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.015); }
+    }
+    @keyframes glowCyan {
+      0%,100% { filter: drop-shadow(0 0 0 rgba(34,211,238,0)); }
+      50% { filter: drop-shadow(0 0 6px rgba(34,211,238,0.55)); }
+    }
+    @keyframes glowEmerald {
+      0%,100% { filter: drop-shadow(0 0 0 rgba(52,211,153,0)); }
+      50% { filter: drop-shadow(0 0 6px rgba(52,211,153,0.5)); }
+    }
+    @keyframes glowViolet {
+      0%,100% { filter: drop-shadow(0 0 0 rgba(167,139,250,0)); }
+      50% { filter: drop-shadow(0 0 7px rgba(167,139,250,0.55)); }
+    }
+    @keyframes glowAmber {
+      0%,100% { filter: drop-shadow(0 0 0 rgba(251,191,36,0)); }
+      50% { filter: drop-shadow(0 0 6px rgba(251,191,36,0.45)); }
+    }
+    @keyframes glowOrange {
+      0%,100% { filter: drop-shadow(0 0 0 rgba(251,146,60,0)); }
+      50% { filter: drop-shadow(0 0 6px rgba(251,146,60,0.5)); }
+    }
+    @keyframes glowRose {
+      0%,100% { filter: drop-shadow(0 0 0 rgba(251,113,133,0)); }
+      50% { filter: drop-shadow(0 0 6px rgba(251,113,133,0.45)); }
+    }
+
+    .host-boundary {
+      animation: boundaryPulse 6s ease-in-out infinite;
+    }
+    @keyframes boundaryPulse {
+      0%,100% { stroke-opacity: 0.55; }
+      50% { stroke-opacity: 1; }
+    }
+
+    .scanline {
+      pointer-events: none;
+      animation: scan 7s linear infinite;
+    }
+    @keyframes scan {
+      0% { transform: translateY(-40px); opacity: 0; }
+      8% { opacity: 0.35; }
+      92% { opacity: 0.2; }
+      100% { transform: translateY(920px); opacity: 0; }
+    }
+
+    .live-ping {
+      animation: livePing 2.2s ease-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    @keyframes livePing {
+      0% { opacity: 0.7; transform: scale(0.85); }
+      70% { opacity: 0; transform: scale(1.8); }
+      100% { opacity: 0; transform: scale(1.8); }
+    }
+
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -43,9 +180,22 @@
       border-radius: 0.75rem;
       border: 1px solid #1e293b;
       padding: 1.05rem 1.1rem;
+      animation: fadeUp 0.7s ease both;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:nth-child(1) { animation-delay: 0.35s; }
+    .card:nth-child(2) { animation-delay: 0.42s; }
+    .card:nth-child(3) { animation-delay: 0.49s; }
+    .card:nth-child(4) { animation-delay: 0.56s; }
+    .card:nth-child(5) { animation-delay: 0.63s; }
+    .card:nth-child(6) { animation-delay: 0.7s; }
+    .card:hover {
+      border-color: #334155;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
     }
     .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.65rem; }
-    .card-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; animation: pulse 2.4s infinite; }
     .card-dot.cyan { background: #22d3ee; }
     .card-dot.emerald { background: #34d399; }
     .card-dot.violet { background: #a78bfa; }
@@ -56,11 +206,45 @@
     .card h3 { font-size: 0.82rem; font-weight: 600; }
     .card ul { list-style: none; color: #94a3b8; font-size: 0.72rem; line-height: 1.45; }
     .card li { margin-bottom: 0.28rem; }
-    .footer { text-align: center; margin-top: 1.25rem; color: #475569; font-size: 0.72rem; }
+    .footer { text-align: center; margin-top: 1.25rem; color: #475569; font-size: 0.72rem; animation: softIn 1s ease 0.8s both; }
     .note {
       margin-top: 1rem; color: #64748b; font-size: 0.72rem; line-height: 1.5;
       border-left: 2px solid #1e293b; padding-left: 0.85rem;
+      animation: softIn 1s ease 0.75s both;
     }
+
+    body:has(#pause-motion:checked) .flow,
+    body:has(#pause-motion:checked) .flow-slow,
+    body:has(#pause-motion:checked) .flow-reverse,
+    body:has(#pause-motion:checked) .node-glow-cyan,
+    body:has(#pause-motion:checked) .node-glow-emerald,
+    body:has(#pause-motion:checked) .node-glow-violet,
+    body:has(#pause-motion:checked) .node-glow-amber,
+    body:has(#pause-motion:checked) .node-glow-orange,
+    body:has(#pause-motion:checked) .node-glow-rose,
+    body:has(#pause-motion:checked) .node-glow-tech,
+    body:has(#pause-motion:checked) .node-glow-main,
+    body:has(#pause-motion:checked) .node-glow-balanced,
+    body:has(#pause-motion:checked) .host-boundary,
+    body:has(#pause-motion:checked) .scanline,
+    body:has(#pause-motion:checked) .live-ping,
+    body:has(#pause-motion:checked) .pulse-dot,
+    body:has(#pause-motion:checked) .card-dot,
+    body:has(#pause-motion:checked) .diagram-container::after {
+      animation-play-state: paused !important;
+    }
+    body:has(#pause-motion:checked) .scanline { opacity: 0; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .scanline { display: none; }
+      .flow, .flow-slow, .flow-reverse { stroke-dasharray: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -99,64 +283,70 @@
             <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa"/>
           </marker>
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+            <path class="flow" d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
           </pattern>
           <linearGradient id="titleGlow" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.15"/>
             <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.08"/>
           </linearGradient>
+          <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#22d3ee" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#22d3ee" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
+          </linearGradient>
         </defs>
 
         <rect width="100%" height="100%" fill="url(#grid)"/>
+        <rect class="scanline" x="24" y="0" width="1132" height="28" fill="url(#scanGrad)" opacity="0.25"/>
 
         <!-- ========== EDGES (drawn first) ========== -->
         <!-- Human → surfaces -->
-        <line x1="118" y1="78" x2="200" y2="78" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
-        <line x1="118" y1="95" x2="200" y2="148" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-cyan)"/>
+        <line class="flow" x1="118" y1="78" x2="200" y2="78" stroke="#22d3ee" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+        <line class="flow" x1="118" y1="95" x2="200" y2="148" stroke="#22d3ee" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrow-cyan)"/>
         <text x="145" y="70" fill="#64748b" font-size="8">chat</text>
 
         <!-- Desktop ↔ profiles -->
-        <line x1="310" y1="95" x2="400" y2="200" stroke="#34d399" stroke-width="1.4" marker-end="url(#arrow-emerald)"/>
-        <line x1="255" y1="175" x2="255" y2="198" stroke="#34d399" stroke-width="1.3" marker-end="url(#arrow-emerald)"/>
+        <line class="flow" x1="310" y1="95" x2="400" y2="200" stroke="#34d399" stroke-width="1.4" marker-end="url(#arrow-emerald)"/>
+        <line class="flow" x1="255" y1="175" x2="255" y2="198" stroke="#34d399" stroke-width="1.3" marker-end="url(#arrow-emerald)"/>
         <text x="318" y="155" fill="#64748b" font-size="8">HERMES_HOME</text>
         <text x="262" y="190" fill="#64748b" font-size="8">gateway home</text>
 
         <!-- Profiles → MoA / models -->
-        <line x1="720" y1="265" x2="820" y2="265" stroke="#a78bfa" stroke-width="1.4" marker-end="url(#arrow-violet)"/>
+        <line class="flow" x1="720" y1="265" x2="820" y2="265" stroke="#a78bfa" stroke-width="1.4" marker-end="url(#arrow-violet)"/>
         <text x="745" y="257" fill="#64748b" font-size="8">/model nous-*</text>
 
         <!-- Profiles → shared services bus -->
-        <line x1="560" y1="355" x2="560" y2="390" stroke="#fbbf24" stroke-width="1.4" marker-end="url(#arrow-amber)"/>
+        <line class="flow" x1="560" y1="355" x2="560" y2="390" stroke="#fbbf24" stroke-width="1.4" marker-end="url(#arrow-amber)"/>
 
         <!-- Main → cron -->
-        <path d="M 255 350 C 255 370 200 380 200 410" fill="none" stroke="#fb923c" stroke-width="1.4" marker-end="url(#arrow-orange)"/>
+        <path class="flow" d="M 255 350 C 255 370 200 380 200 410" fill="none" stroke="#fb923c" stroke-width="1.4" marker-end="url(#arrow-orange)"/>
         <text x="175" y="385" fill="#fb923c" font-size="8">schedules</text>
 
         <!-- Shared → fleet -->
-        <line x1="720" y1="455" x2="820" y2="520" stroke="#fb923c" stroke-width="1.3" marker-end="url(#arrow-orange)"/>
+        <line class="flow" x1="720" y1="455" x2="820" y2="520" stroke="#fb923c" stroke-width="1.3" marker-end="url(#arrow-orange)"/>
         <text x="760" y="490" fill="#64748b" font-size="8">Hive+HV+node</text>
 
         <!-- Storage links -->
-        <line x1="560" y1="530" x2="560" y2="575" stroke="#a78bfa" stroke-width="1.3" marker-end="url(#arrow-violet)"/>
-        <line x1="400" y1="620" x2="200" y2="700" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrowhead)"/>
-        <line x1="560" y1="690" x2="560" y2="730" stroke="#fbbf24" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arrow-amber)"/>
+        <line class="flow" x1="560" y1="530" x2="560" y2="575" stroke="#a78bfa" stroke-width="1.3" marker-end="url(#arrow-violet)"/>
+        <line class="flow-slow" x1="400" y1="620" x2="200" y2="700" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+        <line class="flow-slow" x1="560" y1="690" x2="560" y2="730" stroke="#fbbf24" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arrow-amber)"/>
         <text x="568" y="715" fill="#fbbf24" font-size="8">borgmatic</text>
 
         <!-- External cloud links from shared -->
-        <path d="M 900 430 C 980 430 1000 200 1000 160" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrowhead)"/>
+        <path class="flow-slow" d="M 900 430 C 980 430 1000 200 1000 160" fill="none" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arrowhead)"/>
         <text x="960" y="300" fill="#64748b" font-size="8">APIs</text>
 
         <!-- Backup github -->
-        <line x1="900" y1="780" x2="1000" y2="780" stroke="#fb7185" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#arrowhead)"/>
+        <line class="flow-reverse" x1="900" y1="780" x2="1000" y2="780" stroke="#fb7185" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#arrowhead)"/>
 
         <!-- ========== HOST BOUNDARY ========== -->
-        <rect x="24" y="24" width="1132" height="872" rx="14" fill="rgba(251,191,36,0.03)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="10,5"/>
+        <rect class="host-boundary" x="24" y="24" width="1132" height="872" rx="14" fill="rgba(251,191,36,0.03)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="10,5"/>
         <text x="40" y="46" fill="#fbbf24" font-size="11" font-weight="600">HOST · Windows 10 · DUSTIN7600X · RTX 4060 Ti · Dell S3422DWG ultrawide</text>
         <text x="40" y="62" fill="#64748b" font-size="9">C: OS NVMe · D: cold/librarian · E–H TerraMaster · K: Steam NVMe · Obsidian on K:</text>
 
         <!-- ========== HUMAN ========== -->
         <rect x="40" y="78" width="78" height="44" rx="6" fill="#0f172a"/>
-        <rect x="40" y="78" width="78" height="44" rx="6" fill="rgba(30,41,59,0.55)" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect class="node node-glow-cyan" x="40" y="78" width="78" height="44" rx="6" fill="rgba(30,41,59,0.55)" stroke="#94a3b8" stroke-width="1.5"/>
         <text x="79" y="96" fill="white" font-size="11" font-weight="600" text-anchor="middle">Dustin</text>
         <text x="79" y="111" fill="#94a3b8" font-size="8" text-anchor="middle">human loop</text>
 
@@ -165,7 +355,7 @@
         <text x="212" y="58" fill="#22d3ee" font-size="9" font-weight="600">SURFACES</text>
 
         <rect x="214" y="68" width="92" height="48" rx="6" fill="#0f172a"/>
-        <rect x="214" y="68" width="92" height="48" rx="6" fill="rgba(8,51,68,0.45)" stroke="#22d3ee" stroke-width="1.5"/>
+        <rect class="node node-glow-tech" x="214" y="68" width="92" height="48" rx="6" fill="rgba(8,51,68,0.45)" stroke="#22d3ee" stroke-width="1.5"/>
         <text x="260" y="88" fill="white" font-size="11" font-weight="600" text-anchor="middle">Desktop</text>
         <text x="260" y="103" fill="#67e8f9" font-size="8" text-anchor="middle">tech profile</text>
 
@@ -175,7 +365,7 @@
         <text x="362" y="103" fill="#94a3b8" font-size="8" text-anchor="middle">hermes -p</text>
 
         <rect x="214" y="126" width="192" height="32" rx="6" fill="#0f172a"/>
-        <rect x="214" y="126" width="192" height="32" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
+        <rect class="node node-glow-main" x="214" y="126" width="192" height="32" rx="6" fill="rgba(6,78,59,0.4)" stroke="#34d399" stroke-width="1.5"/>
         <text x="310" y="146" fill="white" font-size="11" font-weight="600" text-anchor="middle">Gateway · main profile</text>
 
         <!-- ========== EXTERNAL / MODELS (top right) ========== -->
@@ -183,12 +373,12 @@
         <text x="832" y="58" fill="#fb7185" font-size="9" font-weight="600">EXTERNAL · MODELS &amp; CLOUD</text>
 
         <rect x="836" y="70" width="90" height="42" rx="6" fill="#0f172a"/>
-        <rect x="836" y="70" width="90" height="42" rx="6" fill="rgba(136,19,55,0.35)" stroke="#fb7185" stroke-width="1.5"/>
+        <rect class="node node-glow-rose" x="836" y="70" width="90" height="42" rx="6" fill="rgba(136,19,55,0.35)" stroke="#fb7185" stroke-width="1.5"/>
         <text x="881" y="88" fill="white" font-size="10" font-weight="600" text-anchor="middle">xAI Grok</text>
         <text x="881" y="102" fill="#fda4af" font-size="8" text-anchor="middle">4.5 default</text>
 
         <rect x="936" y="70" width="90" height="42" rx="6" fill="#0f172a"/>
-        <rect x="936" y="70" width="90" height="42" rx="6" fill="rgba(120,53,15,0.35)" stroke="#fbbf24" stroke-width="1.5"/>
+        <rect class="node node-glow-amber" x="936" y="70" width="90" height="42" rx="6" fill="rgba(120,53,15,0.35)" stroke="#fbbf24" stroke-width="1.5"/>
         <text x="981" y="88" fill="white" font-size="10" font-weight="600" text-anchor="middle">Nous Portal</text>
         <text x="981" y="102" fill="#fde68a" font-size="8" text-anchor="middle">MoA + web</text>
 
@@ -214,7 +404,7 @@
 
         <!-- main -->
         <rect x="54" y="242" width="138" height="98" rx="6" fill="#0f172a"/>
-        <rect x="54" y="242" width="138" height="98" rx="6" fill="rgba(6,78,59,0.45)" stroke="#34d399" stroke-width="1.8"/>
+        <rect class="node node-glow-main" x="54" y="242" width="138" height="98" rx="6" fill="rgba(6,78,59,0.45)" stroke="#34d399" stroke-width="1.8"/>
         <text x="123" y="262" fill="white" font-size="12" font-weight="700" text-anchor="middle">main</text>
         <text x="123" y="278" fill="#6ee7b7" font-size="8" text-anchor="middle">gateway · light chat</text>
         <text x="123" y="294" fill="#94a3b8" font-size="8" text-anchor="middle">~110 skills</text>
@@ -223,7 +413,7 @@
 
         <!-- tech -->
         <rect x="206" y="242" width="138" height="98" rx="6" fill="#0f172a"/>
-        <rect x="206" y="242" width="138" height="98" rx="6" fill="rgba(8,51,68,0.5)" stroke="#22d3ee" stroke-width="1.8"/>
+        <rect class="node node-glow-tech" x="206" y="242" width="138" height="98" rx="6" fill="rgba(8,51,68,0.5)" stroke="#22d3ee" stroke-width="1.8"/>
         <text x="275" y="262" fill="white" font-size="12" font-weight="700" text-anchor="middle">tech</text>
         <text x="275" y="278" fill="#67e8f9" font-size="8" text-anchor="middle">hard work · desktop</text>
         <text x="275" y="294" fill="#94a3b8" font-size="8" text-anchor="middle">~128 skills</text>
@@ -232,7 +422,7 @@
 
         <!-- house -->
         <rect x="358" y="242" width="128" height="98" rx="6" fill="#0f172a"/>
-        <rect x="358" y="242" width="128" height="98" rx="6" fill="rgba(6,78,59,0.32)" stroke="#34d399" stroke-width="1.5"/>
+        <rect class="node node-glow-emerald" x="358" y="242" width="128" height="98" rx="6" fill="rgba(6,78,59,0.32)" stroke="#34d399" stroke-width="1.5"/>
         <text x="422" y="262" fill="white" font-size="12" font-weight="700" text-anchor="middle">house</text>
         <text x="422" y="278" fill="#94a3b8" font-size="8" text-anchor="middle">home / projects</text>
         <text x="422" y="294" fill="#94a3b8" font-size="8" text-anchor="middle">~100 skills</text>
@@ -241,7 +431,7 @@
 
         <!-- lifestyle -->
         <rect x="500" y="242" width="128" height="98" rx="6" fill="#0f172a"/>
-        <rect x="500" y="242" width="128" height="98" rx="6" fill="rgba(76,29,149,0.32)" stroke="#a78bfa" stroke-width="1.5"/>
+        <rect class="node node-glow-violet" x="500" y="242" width="128" height="98" rx="6" fill="rgba(76,29,149,0.32)" stroke="#a78bfa" stroke-width="1.5"/>
         <text x="564" y="262" fill="white" font-size="12" font-weight="700" text-anchor="middle">lifestyle</text>
         <text x="564" y="278" fill="#94a3b8" font-size="8" text-anchor="middle">healing season</text>
         <text x="564" y="294" fill="#94a3b8" font-size="8" text-anchor="middle">~102 skills</text>
@@ -250,7 +440,7 @@
 
         <!-- x -->
         <rect x="642" y="242" width="140" height="98" rx="6" fill="#0f172a"/>
-        <rect x="642" y="242" width="140" height="98" rx="6" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect class="node node-glow-cyan" x="642" y="242" width="140" height="98" rx="6" fill="rgba(30,41,59,0.5)" stroke="#94a3b8" stroke-width="1.5"/>
         <text x="712" y="262" fill="white" font-size="12" font-weight="700" text-anchor="middle">x</text>
         <text x="712" y="278" fill="#94a3b8" font-size="8" text-anchor="middle">social / monerostar</text>
         <text x="712" y="294" fill="#94a3b8" font-size="8" text-anchor="middle">~105 skills</text>
@@ -268,7 +458,7 @@
         <text x="873" y="272" fill="#94a3b8" font-size="7" text-anchor="middle">Grok agg</text>
 
         <rect x="918" y="244" width="78" height="36" rx="5" fill="#0f172a"/>
-        <rect x="918" y="244" width="78" height="36" rx="5" fill="rgba(76,29,149,0.4)" stroke="#c4b5fd" stroke-width="1.6"/>
+        <rect class="node node-glow-balanced" x="918" y="244" width="78" height="36" rx="5" fill="rgba(76,29,149,0.4)" stroke="#c4b5fd" stroke-width="1.6"/>
         <text x="957" y="260" fill="white" font-size="9" font-weight="700" text-anchor="middle">balanced</text>
         <text x="957" y="272" fill="#ddd6fe" font-size="7" text-anchor="middle">default ★</text>
 
@@ -291,7 +481,7 @@
         <text x="54" y="396" fill="#fb923c" font-size="10" font-weight="600">MAIN CRON · fail-only / glance</text>
 
         <rect x="54" y="408" width="292" height="104" rx="6" fill="#0f172a"/>
-        <rect x="54" y="408" width="292" height="104" rx="6" fill="rgba(251,146,60,0.18)" stroke="#fb923c" stroke-width="1.4"/>
+        <rect class="node node-glow-orange" x="54" y="408" width="292" height="104" rx="6" fill="rgba(251,146,60,0.18)" stroke="#fb923c" stroke-width="1.4"/>
         <text x="66" y="426" fill="#fdba74" font-size="8">05:00  X mentions glance (agent · grok)</text>
         <text x="66" y="440" fill="#fdba74" font-size="8">06:00 / 22:00  monerod stop / start</text>
         <text x="66" y="454" fill="#fdba74" font-size="8">15 */6  Hive fleet fail-only watchdog</text>
@@ -343,12 +533,12 @@
         <text x="834" y="396" fill="#fb923c" font-size="10" font-weight="600">MONERO FLEET · quiet ops</text>
 
         <rect x="834" y="410" width="140" height="52" rx="6" fill="#0f172a"/>
-        <rect x="834" y="410" width="140" height="52" rx="6" fill="rgba(251,146,60,0.28)" stroke="#fb923c" stroke-width="1.5"/>
+        <rect class="node node-glow-orange" x="834" y="410" width="140" height="52" rx="6" fill="rgba(251,146,60,0.28)" stroke="#fb923c" stroke-width="1.5"/>
         <text x="904" y="430" fill="white" font-size="11" font-weight="600" text-anchor="middle">Fleet Console</text>
         <text x="904" y="446" fill="#fdba74" font-size="7" text-anchor="middle">~/src/monero-fleet-console</text>
 
         <rect x="986" y="410" width="138" height="52" rx="6" fill="#0f172a"/>
-        <rect x="986" y="410" width="138" height="52" rx="6" fill="rgba(251,146,60,0.22)" stroke="#fb923c" stroke-width="1.4"/>
+        <rect class="node node-glow-orange" x="986" y="410" width="138" height="52" rx="6" fill="rgba(251,146,60,0.22)" stroke="#fb923c" stroke-width="1.4"/>
         <text x="1055" y="430" fill="white" font-size="11" font-weight="600" text-anchor="middle">monerod local</text>
         <text x="1055" y="446" fill="#fdba74" font-size="7" text-anchor="middle">K:\Monero · RPC</text>
 
@@ -421,12 +611,12 @@
         <text x="834" y="566" fill="#fb7185" font-size="10" font-weight="600">BACKUP · two different jobs</text>
 
         <rect x="834" y="580" width="140" height="52" rx="6" fill="#0f172a"/>
-        <rect x="834" y="580" width="140" height="52" rx="6" fill="rgba(136,19,55,0.32)" stroke="#fb7185" stroke-width="1.5"/>
+        <rect class="node node-glow-rose" x="834" y="580" width="140" height="52" rx="6" fill="rgba(136,19,55,0.32)" stroke="#fb7185" stroke-width="1.5"/>
         <text x="904" y="600" fill="white" font-size="11" font-weight="600" text-anchor="middle">Borgmatic</text>
         <text x="904" y="616" fill="#fda4af" font-size="7" text-anchor="middle">WSL → F:\borg-repo</text>
 
         <rect x="986" y="580" width="138" height="52" rx="6" fill="#0f172a"/>
-        <rect x="986" y="580" width="138" height="52" rx="6" fill="rgba(136,19,55,0.28)" stroke="#fb7185" stroke-width="1.4"/>
+        <rect class="node node-glow-rose" x="986" y="580" width="138" height="52" rx="6" fill="rgba(136,19,55,0.28)" stroke="#fb7185" stroke-width="1.4"/>
         <text x="1055" y="600" fill="white" font-size="11" font-weight="600" text-anchor="middle">hermes-backup</text>
         <text x="1055" y="616" fill="#fda4af" font-size="7" text-anchor="middle">private · scrubbed</text>
 
@@ -443,6 +633,13 @@
         <rect x="820" y="720" width="320" height="60" rx="10" fill="rgba(6,78,59,0.25)" stroke="#34d399" stroke-width="1.2"/>
         <text x="834" y="744" fill="#6ee7b7" font-size="11" font-weight="600">PRIMARY FOCUS</text>
         <text x="834" y="762" fill="#94a3b8" font-size="9">Monero fleet · privacy · Hermes itself · gentle rig care</text>
+
+        
+        <!-- live pings -->
+        <circle class="live-ping" cx="275" cy="255" r="5" fill="#22d3ee" opacity="0.5"/>
+        <circle class="live-ping" cx="123" cy="255" r="5" fill="#34d399" opacity="0.5" style="animation-delay:0.7s"/>
+        <circle class="live-ping" cx="904" cy="422" r="5" fill="#fb923c" opacity="0.5" style="animation-delay:1.1s"/>
+        <circle class="live-ping" cx="957" cy="255" r="4" fill="#a78bfa" opacity="0.5" style="animation-delay:0.4s"/>
 
         <!-- ========== LEGEND ========== -->
         <text x="54" y="820" fill="white" font-size="10" font-weight="600">Legend</text>
@@ -545,7 +742,7 @@
       Companion markdown: <code>docs/06-hermes-stack-map.md</code> · Obsidian: <code>Areas/Tech/Hermes-Stack-Map.md</code>.
       Re-inventory profiles with a quick YAML scan if the map drifts after big setup changes.
     </p>
-    <p class="footer">Hermes Stack Map · Option C · 2026-07-25 · monerostar · self-contained HTML (JetBrains Mono)</p>
+    <p class="footer">Hermes Stack Map · Option C · animated · 2026-07-25 · monerostar · pure CSS/SVG</p>
   </div>
 </body>
 </html>
