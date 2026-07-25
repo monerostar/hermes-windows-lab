@@ -24,12 +24,13 @@ A calm place to:
 | xmrig configs with wallets/pools | privacy / security |
 | chat session databases | personal + bulky |
 
-Use a **separate private backup** flow for disaster recovery (see Trello: refresh `hermes-backup`). This lab stays readable and teachable.
+Use a **separate private backup** flow for disaster recovery (`monerostar/hermes-backup`). This lab stays readable and teachable.
 
 ## Layout
 
 ```text
-docs/               explainers (learning notes)
+docs/               explainers (learning notes) + stack map HTML
+docs/assets/        concept art / diagrams (no secrets)
 scripts/            small helper scripts (no secrets)
 skills-samples/     optional scrubbed skill excerpts
 .gitignore          blocks common secret patterns
@@ -42,6 +43,7 @@ skills-samples/     optional scrubbed skill excerpts
 3. [GitHub CLI setup on this machine](docs/03-github-cli-setup.md)
 4. [Safety: no secrets in git](docs/04-safety-no-secrets.md)
 5. [Backup vs lab (two different jobs)](docs/05-backup-vs-lab.md)
+6. [Hermes stack map](docs/06-hermes-stack-map.md) · [interactive diagram](docs/hermes-stack-map.html)
 
 ## Quick git reminders
 
@@ -61,3 +63,4 @@ Commits on this account use:
 
 - Skeleton created: 2026-07-23
 - First real content: setup docs from initial monerostar GitHub wiring
+- Stack map (Option C): 2026-07-25 — multi-profile systems portrait HTML + companion md
