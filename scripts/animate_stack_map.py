@@ -408,8 +408,8 @@ if html2.count("live-ping") < 3:
     )
 
 html2 = html2.replace(
-    "<title>Hermes Stack Map — monerostar / Dustin</title>",
-    "<title>Hermes Stack Map (animated) — monerostar / Dustin</title>",
+    "<title>Hermes Stack Map — monerostar</title>",
+    "<title>Hermes Stack Map (animated) — monerostar</title>",
     1,
 )
 html2 = html2.replace(

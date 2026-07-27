@@ -18,7 +18,7 @@ A calm map of how the pieces relate — not a full inventory dump and not a back
 
 ## Layers (north → south on the diagram)
 
-1. **Human** — Dustin in the loop; no fake urgency  
+1. **Human** — operator in the loop; no fake urgency  
 2. **Surfaces** — Desktop (tech), TUI/CLI, Gateway (main)  
 3. **Profiles** — main · tech · house · lifestyle · x  
 4. **MoA ladder** — nous-cheap → **balanced** (default) → deep → free; solo Grok default  
@@ -35,7 +35,7 @@ A calm map of how the pieces relate — not a full inventory dump and not a back
 | **main** | Gateway + crons | 110 | 8 scheduled jobs; orchestrator home |
 | **tech** | Hard work / desktop | 128 | Hound + Trello MCP; fleet console home |
 | **house** | Home / projects | 100 | agentmail + trello |
-| **lifestyle** | Healing season | 102 | GWS; cold export bias |
+| **lifestyle** | Personal / lifestyle | 102 | GWS; cold export bias |
 | **x** | Social monerostar | 105 | xurl; garden skills |
 
 **All:** default model `grok-4.5` / `xai-oauth`, MoA default `nous-balanced`, web via Nous gateway Firecrawl.

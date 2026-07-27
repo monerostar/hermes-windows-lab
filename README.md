@@ -1,9 +1,9 @@
 # hermes-windows-lab
 
-Private learning lab for running [Hermes Agent](https://hermes-agent.nousresearch.com/) on Windows — notes, safe samples, and small scripts.
+Public learning lab for running [Hermes Agent](https://hermes-agent.nousresearch.com/) on Windows — notes, safe samples, and small scripts.
 
 **Owner:** [monerostar](https://github.com/monerostar)  
-**Visibility:** private for now (can flip public later once scrubbed and ready)  
+**Visibility:** public  
 **Not this repo:** full Hermes profile backups, sessions, API keys, wallets, or live configs with secrets.
 
 ## What this is
