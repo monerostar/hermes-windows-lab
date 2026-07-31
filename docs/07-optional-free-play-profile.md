@@ -24,8 +24,9 @@ broken skill can never affect the profile used for real tasks.
    into other profiles' skills, memory, or configs without clear intent.
 3. No secrets in git. No API keys, no tokens, no wallets, no mine configs. If a
    script needs a secret, read it from an environment variable, never hard-code.
-4. Manual sessions first. Do not set up scheduled jobs until the pattern is steady
-   and the owner signs off. One experiment at a time.
+4. Manual sessions first. Do not set up unattended scheduled jobs until the pattern
+   is steady and the owner signs off. Optional: a session fire loop can run each free
+   model once plus one free MoA when you start play. One clear experiment per slot.
 5. Leave a findings trail. Write short notes to `review/FINDINGS.md`. Flag anything
    important to the main reviewer in `review/inbox/`.
 
