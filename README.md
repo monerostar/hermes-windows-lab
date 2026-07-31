@@ -44,6 +44,7 @@ skills-samples/     optional scrubbed skill excerpts
 4. [Safety: no secrets in git](docs/04-safety-no-secrets.md)
 5. [Backup vs lab (two different jobs)](docs/05-backup-vs-lab.md)
 6. [Hermes stack map](docs/06-hermes-stack-map.md) · [interactive diagram](docs/hermes-stack-map.html)
+7. [Optional: free-model play profile](docs/07-optional-free-play-profile.md)
 
 ## Quick git reminders
 
