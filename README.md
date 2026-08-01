@@ -45,6 +45,7 @@ skills-samples/     optional scrubbed skill excerpts
 5. [Backup vs lab (two different jobs)](docs/05-backup-vs-lab.md)
 6. [Hermes stack map](docs/06-hermes-stack-map.md) · [interactive diagram](docs/hermes-stack-map.html)
 7. [Optional: free-model play profile](docs/07-optional-free-play-profile.md)
+8. [Handoff 2026-08-01: Legion Go setup state](docs/08-handoff-2026-08-01-legion-go.md)
 
 ## Quick git reminders
 
@@ -65,3 +66,4 @@ Commits on this account use:
 - Skeleton created: 2026-07-23
 - First real content: setup docs from initial monerostar GitHub wiring
 - Stack map (Option C): 2026-07-25 — multi-profile systems portrait HTML + companion md
+- 2026-08-01: Legion Go handoff pushed (SSH wiring, gaming account prep, PTY gotcha)
