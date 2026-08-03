@@ -18,6 +18,28 @@ Completed initial wiring so Hermes can help with repos under **monerostar**.
 - Scopes observed: `repo`, `read:org`, `gist`
 - `gh auth setup-git` — git credential helper points at `gh`
 
+## Workflow scope (footgun we hit)
+
+Pushing a branch that touches anything under `.github/workflows/*` requires
+the **`workflow` scope**. Without it, `git push` is rejected even though the
+rest of the branch pushes fine. It shows up as a push rejection, not a login
+error, which makes it easy to misread.
+
+```bash
+# check scopes quickly
+gh auth status
+
+# add the workflow scope (device/browser prompt)
+gh auth refresh -s workflow
+
+# confirm
+gh auth status
+```
+
+Add the scope **before** you start editing workflows, so the push doesn't
+fail mid-PR. Note: a fresh device login can time out waiting for the browser
+on this host; run the refresh when you are at the keyboard.
+
 ## Git identity
 
 ```text
@@ -40,3 +62,5 @@ gh api user --jq .login
 - No drive-by pushes or contribution farming
 - Prefer clear commits with short messages
 - Never commit `.env`, tokens, wallet addresses, or live Hermes profile data
+- Before pushing a branch that touches `.github/workflows/*`, confirm the
+  `workflow` scope is present (`gh auth status`), or the push will be rejected
