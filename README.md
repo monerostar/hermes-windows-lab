@@ -47,6 +47,7 @@ skills-samples/     optional scrubbed skill excerpts
 7. [Optional: free-model play profile](docs/07-optional-free-play-profile.md)
 8. [Handoff 2026-08-01: Legion Go setup state](docs/08-handoff-2026-08-01-legion-go.md)
 9. [Spotify hygiene with Hermes](docs/09-spotify-hygiene-with-hermes.md) (scrubbed method + API notes; no personal library)
+10. [Ops Console desktop plugins](docs/10-ops-console-desktop-plugins.md) (usage + miner + think cards pattern; no host secrets)
 
 ## Quick git reminders
 
@@ -69,3 +70,4 @@ Commits on this account use:
 - Stack map (Option C): 2026-07-25 — multi-profile systems portrait HTML + companion md
 - 2026-08-01: Legion Go handoff pushed (SSH wiring, gaming account prep, PTY gotcha)
 - 2026-08-05: Spotify hygiene lab note (play counts > likes; Feb-2026 API gotchas; no secrets)
+- 2026-08-08: Ops Console desktop plugins method note (fleet glance cards pattern)
