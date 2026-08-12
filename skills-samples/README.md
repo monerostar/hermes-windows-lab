@@ -1,9 +1,17 @@
-# skills-samples/
+# skills-samples
 
-Optional place for **sanitized** skill excerpts you are willing to keep in git.
+Full, **scrubbed** skill packages safe for a public lab. Copy a directory into a Hermes profile:
 
-Rules:
+```text
+~/.hermes/skills/productivity/<name>/
+# or multi-profile:
+%LOCALAPPDATA%/hermes/profiles/<profile>/skills/productivity/<name>/
+```
 
-- No live pool URLs with auth, no wallets, no personal host inventory dumps
-- Prefer “pattern” docs over full private runbooks
-- Empty is fine until you choose one sample intentionally
+Then new chat or reload skills.
+
+| Sample | Purpose |
+|--------|---------|
+| `outbound-fact-gate` | Pre-send fact/tone/leak gate for emails (SHIP/HOLD/KILL). Human always sends. |
+
+Not a substitute for private desk drops when a host needs captain install notes.
