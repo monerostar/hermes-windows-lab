@@ -48,6 +48,7 @@ skills-samples/     optional scrubbed skill excerpts
 8. [Handoff 2026-08-01: Legion Go setup state](docs/08-handoff-2026-08-01-legion-go.md)
 9. [Spotify hygiene with Hermes](docs/09-spotify-hygiene-with-hermes.md) (scrubbed method + API notes; no personal library)
 10. [Ops Console desktop plugins](docs/10-ops-console-desktop-plugins.md) (usage + miner + think cards pattern; no host secrets)
+11. [Outbound fact gate skill](docs/11-outbound-fact-gate.md) (pre-send email SHIP/HOLD/KILL; human always sends)
 
 ## Quick git reminders
 
