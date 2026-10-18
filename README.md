@@ -49,6 +49,7 @@ skills-samples/     optional scrubbed skill excerpts
 9. [Spotify hygiene with Hermes](docs/09-spotify-hygiene-with-hermes.md) (scrubbed method + API notes; no personal library)
 10. [Ops Console desktop plugins](docs/10-ops-console-desktop-plugins.md) (usage + miner + think cards pattern; no host secrets)
 11. [Outbound fact gate skill](docs/11-outbound-fact-gate.md) (pre-send email SHIP/HOLD/KILL; human always sends)
+12. [Bots rail: another machine](docs/12-bots-rail-another-machine.md) (SSH connection vs Remote gateway, when each applies, what it exposes)
 
 ## Quick git reminders
 
@@ -72,3 +73,4 @@ Commits on this account use:
 - 2026-08-01: Legion Go handoff pushed (SSH wiring, gaming account prep, PTY gotcha)
 - 2026-08-05: Spotify hygiene lab note (play counts > likes; Feb-2026 API gotchas; no secrets)
 - 2026-08-08: Ops Console desktop plugins method note (fleet glance cards pattern)
+- 2026-10-18: Stack map refreshed to the October layout; new doc 12 on wiring another machine into the Desktop Bots rail (SSH vs Remote gateway)
