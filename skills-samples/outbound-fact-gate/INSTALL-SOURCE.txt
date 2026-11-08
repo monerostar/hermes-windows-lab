@@ -1,0 +1,8 @@
+name: outbound-fact-gate
+version: 1.0.0
+source: monerostar/hermes-windows-lab skills-samples/outbound-fact-gate
+canonical_desk: private fleet desk (not public)
+authored: 2026-08-11
+author: monerostar, Hermes Agent
+method: public scrubbed skill sample (full package)
+notes: Generic pre-send email fact gate. No case content. Human always sends.
