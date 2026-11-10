@@ -16,3 +16,5 @@ Implications:
 - Cross-profile skill sharing needs an intentional mount/copy strategy — do not assume everything is global
 
 Desktop tech sessions typically use the tech profile `HERMES_HOME`.
+
+This note is the split, not the whole fleet. The stack map names the other working seats.

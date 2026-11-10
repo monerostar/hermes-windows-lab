@@ -24,7 +24,7 @@ A calm place to:
 | xmrig configs with wallets/pools | privacy / security |
 | chat session databases | personal + bulky |
 
-Use a **separate private backup** flow for disaster recovery (`monerostar/hermes-backup`). This lab stays readable and teachable.
+Use a **separate private backup** flow for disaster recovery. That repo is not named here. This lab stays readable and teachable.
 
 ## Layout
 
@@ -43,11 +43,11 @@ skills-samples/     optional scrubbed skill excerpts
 3. [GitHub CLI setup on this machine](docs/03-github-cli-setup.md)
 4. [Safety: no secrets in git](docs/04-safety-no-secrets.md)
 5. [Backup vs lab (two different jobs)](docs/05-backup-vs-lab.md)
-6. [Hermes stack map](docs/06-hermes-stack-map.md) · [interactive diagram](docs/hermes-stack-map.html)
-7. [Optional: free-model play profile](docs/07-optional-free-play-profile.md)
+6. [Hermes stack map](docs/06-hermes-stack-map.md) · [interactive diagram](docs/hermes-stack-map.html) (diagram is the July picture; the markdown is current)
+7. [Optional: free-model experiment seat](docs/07-optional-free-play-profile.md) (a pattern, not a live profile named play)
 8. [Handoff 2026-08-01: handheld setup state](docs/08-handoff-2026-08-01-handheld.md)
 9. [Spotify hygiene with Hermes](docs/09-spotify-hygiene-with-hermes.md) (scrubbed method + API notes; no personal library)
-10. [Ops Console desktop plugins](docs/10-ops-console-desktop-plugins.md) (usage + miner + think cards pattern; no host secrets)
+10. [Ops Console desktop plugins](docs/10-ops-console-desktop-plugins.md) (a pattern we tried; those three cards are not the current sidebar)
 11. [Outbound fact gate skill](docs/11-outbound-fact-gate.md) (pre-send email SHIP/HOLD/KILL; human always sends)
 12. [Bots rail: another machine](docs/12-bots-rail-another-machine.md) (SSH connection vs Remote gateway, when each applies, what it exposes)
 
@@ -74,3 +74,5 @@ Commits on this account use:
 - 2026-08-05: Spotify hygiene lab note (play counts > likes; Feb-2026 API gotchas; no secrets)
 - 2026-08-08: Ops Console desktop plugins method note (fleet glance cards pattern)
 - 2026-10-18: Stack map refreshed to the October layout; new doc 12 on wiring another machine into the Desktop Bots rail (SSH vs Remote gateway)
+- 2026-11-08: Privacy rebuild. Public history is one clean commit. Not a content refresh.
+- 2026-11-09: Content pass. Stack map matches the November fleet. Clocks and the old ensemble ladder removed. Linux ops notes are not in this lab yet. Diagram left as the July picture on purpose.

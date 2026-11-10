@@ -7,6 +7,6 @@ In this lab we care about **your** setup:
 - Windows host
 - Multiple **profiles** (separate homes for different kinds of work)
 - Skills as reusable procedures
-- Integrations only when they earn their keep (GitHub, Obsidian, Trello, …)
+- Integrations only when they earn their keep (GitHub, Obsidian, and whatever else is actually in use)
 
 You do not need to master every integration. A good stack is the one you actually use calmly.

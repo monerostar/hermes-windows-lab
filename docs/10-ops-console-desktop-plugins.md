@@ -1,6 +1,8 @@
 # Ops Console desktop plugins (scrubbed method)
 
-How monerostar runs a **live fleet glance** inside Hermes Desktop without living in three browser tabs.
+**2026-11-09:** the three cards below (usage, miner, think) are a pattern we tried. They are not the current sidebar. The reusable idea is a local JSON board plus a thin Desktop plugin. The ports are the old defaults, not a promise they are listening.
+
+How this pattern put a fleet glance inside Hermes Desktop without living in three browser tabs.
 
 ## What it is
 
@@ -40,7 +42,7 @@ Nothing public matched **usage + miner + session think** in one Desktop pane for
 ## Related monerostar surfaces
 
 - Public fleet CLI/HTML: `monerostar/monero-fleet-console`
-- Private multi-host desk: `monerostar/hermes-fleet-desk` (`hosts/windows-tech/ops-console`, `think-hud`, usage/miner dashboards)
+- Private multi-host desk holds host paths and startup wiring. Not named here.
 - Desktop Plugin SDK: Hermes docs developer-guide desktop-plugin-sdk
 
 ## Status

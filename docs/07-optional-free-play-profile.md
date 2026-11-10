@@ -1,7 +1,9 @@
 # Optional: free-model play profile
 
+**2026-11-09:** the old play profile is retired. The pattern below is still the right shape for a separate free-model experiment seat. Do not treat a profile named play as current.
+
 This note describes an OPTIONAL, low-risk pattern for learning with Hermes using
-only free Nous models. It is not required to run the lab. It is not for production
+only free models. It is not required to run the lab. It is not for production
 work or fleet tasks.
 
 ## Why it exists
@@ -25,8 +27,7 @@ broken skill can never affect the profile used for real tasks.
 3. No secrets in git. No API keys, no tokens, no wallets, no mine configs. If a
    script needs a secret, read it from an environment variable, never hard-code.
 4. Manual sessions first. Do not set up unattended scheduled jobs until the pattern
-   is steady and the owner signs off. Optional: a session fire loop can run each free
-   model once plus one free MoA when you start play. One clear experiment per slot.
+   is steady and the owner signs off. One clear experiment per slot.
 5. Leave a findings trail. Write short notes to `review/FINDINGS.md`. Flag anything
    important to the main reviewer in `review/inbox/`.
 
