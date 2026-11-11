@@ -45,7 +45,7 @@ skills-samples/     optional scrubbed skill excerpts
 5. [Backup vs lab (two different jobs)](docs/05-backup-vs-lab.md)
 6. [Hermes stack map](docs/06-hermes-stack-map.md) · [interactive diagram](docs/hermes-stack-map.html) (diagram is the July picture; the markdown is current)
 7. [Optional: free-model experiment seat](docs/07-optional-free-play-profile.md) (a pattern, not a live profile named play)
-8. [Handoff 2026-08-01: handheld setup state](docs/08-handoff-2026-08-01-handheld.md)
+8. [Handoff 2026-08-01: Handheld PC setup state](docs/08-handoff-2026-08-01-handheld.md)
 9. [Spotify hygiene with Hermes](docs/09-spotify-hygiene-with-hermes.md) (scrubbed method + API notes; no personal library)
 10. [Ops Console desktop plugins](docs/10-ops-console-desktop-plugins.md) (a pattern we tried; those three cards are not the current sidebar)
 11. [Outbound fact gate skill](docs/11-outbound-fact-gate.md) (pre-send email SHIP/HOLD/KILL; human always sends)
@@ -70,7 +70,7 @@ Commits on this account use:
 - Skeleton created: 2026-07-23
 - First real content: setup docs from initial monerostar GitHub wiring
 - Stack map (Option C): 2026-07-25 — multi-profile systems portrait HTML + companion md
-- 2026-08-01: handheld handoff pushed (SSH wiring, gaming account prep, PTY gotcha)
+- 2026-08-01: Handheld PC handoff pushed (SSH wiring, gaming account prep, PTY gotcha)
 - 2026-08-05: Spotify hygiene lab note (play counts > likes; Feb-2026 API gotchas; no secrets)
 - 2026-08-08: Ops Console desktop plugins method note (fleet glance cards pattern)
 - 2026-10-18: Stack map refreshed to the October layout; new doc 12 on wiring another machine into the Desktop Bots rail (SSH vs Remote gateway)

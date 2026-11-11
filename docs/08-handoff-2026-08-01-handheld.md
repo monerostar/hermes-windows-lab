@@ -1,16 +1,16 @@
-# Handoff — 2026-08-01: handheld setup state
+# Handoff — 2026-08-01: Handheld PC setup state
 
 Status snapshot pushed from the handheld (Hermes) so the ops computer can pick it up and wire its own SSH side.
 
 ## Machine
 
-- Lenovo handheld (Windows 11 dev build, git-bash/MSYS shell)
+- Handheld PC (Windows 11 dev build, git-bash/MSYS shell)
 - Hermes Agent running locally (profile: default)
 
 ## What changed today
 
 ### Local user account
-- Created a **standard (non-admin), passwordless local account** for family gaming.
+- Created a **standard (non-admin), passwordless local account** for household gaming.
 - Minecraft Launcher installed machine-wide (Start Menu shortcut present; per-user
   save data is created under that account's `%APPDATA%\.minecraft` on first login).
 - Steam setup installer staged at `C:\Users\Public\Downloads\SteamSetup.exe`
@@ -18,7 +18,7 @@ Status snapshot pushed from the handheld (Hermes) so the ops computer can pick i
   account's session so it lands per-user.
 
 ### GitHub wiring (this machine → monerostar)
-- **SSH key**: ed25519, title `handheld (Hermes)`, uploaded to the account.
+- **SSH key**: ed25519, title `Handheld (Hermes)`, uploaded to the account.
 - **gh CLI**: v2.97.0 via `winget install GitHub.cli` (this time winget behaved;
   an older session noted it can hang on MSI/UAC — see `03-github-cli-setup.md`).
 - Auth: **SSH protocol** (not HTTPS), token in `%APPDATA%\GitHub CLI\hosts.yml`.

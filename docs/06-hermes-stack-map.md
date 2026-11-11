@@ -118,7 +118,7 @@ Session policy: orchestrator hot about 30 days. Worker profiles about 90 days. T
 5. [Backup vs lab](./05-backup-vs-lab.md)
 6. **This map**
 7. [Optional free-model seat](./07-optional-free-play-profile.md)
-8. [handheld handoff](./08-handoff-2026-08-01-handheld.md)
+8. [Handheld PC handoff](./08-handoff-2026-08-01-handheld.md)
 9. [Spotify hygiene](./09-spotify-hygiene-with-hermes.md)
 10. [Ops Console desktop plugins](./10-ops-console-desktop-plugins.md)
 11. [Outbound fact gate](./11-outbound-fact-gate.md)

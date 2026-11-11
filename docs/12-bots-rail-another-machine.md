@@ -1,7 +1,7 @@
 # 12 — Getting another machine into the Bots rail (SSH vs Remote gateway)
 
 **Date:** 2026-10-18 · Hermes Desktop's multi-connection registry, learned the hard way
-across two family machines with opposite constraints.
+across two household machines with opposite constraints.
 
 The Desktop app's **Bots** rail is not limited to profiles on this PC. Under
 **Settings → Gateways** lives a connection registry (`connections.json` in the app
