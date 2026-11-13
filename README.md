@@ -76,3 +76,4 @@ Commits on this account use:
 - 2026-10-18: Stack map refreshed to the October layout; new doc 12 on wiring another machine into the Desktop Bots rail (SSH vs Remote gateway)
 - 2026-11-08: Privacy rebuild. Public history is one clean commit. Not a content refresh.
 - 2026-11-09: Content pass. Stack map matches the November fleet. Clocks and the old ensemble ladder removed. Linux ops notes are not in this lab yet. Diagram left as the July picture on purpose.
+- 2026-11-13: Doc 12 addendum — travel laptop as rail client ("second desk" pattern): Linux registry path, wizard quirks, boot-persistent left off, and the keys-not-brains trust shape.

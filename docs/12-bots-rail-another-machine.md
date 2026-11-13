@@ -84,3 +84,41 @@ Practical rules we keep:
 
 Official docs worth reading once: Hermes Desktop → *Connecting to a remote backend*,
 and *Multi-connection Desktop*.
+
+## Addendum 2026-11-13 — a travel laptop as the client (the "second desk" pattern)
+
+The situation flipped: not a server joining a rail, but a **laptop that leaves the
+house** wanting the office's bots on its screen. A Linux travel seat, deliberately
+thin: it runs one cheap local profile for hands-on terminal work, and everything with
+memory lives on the machines it dials into.
+
+What transferred from the earlier lessons, and what didn't:
+
+- **Path 1 works on Linux unchanged**, with one bonus: the registry file
+  (`~/.config/Hermes/connections.json` on Linux, `%APPDATA%\Hermes\` on Windows)
+  accepts a hand-written SSH entry — `id`, `kind: "ssh"`, `label`, `host`, `user`,
+  `keyPath` — and a file-level **add** picks up even while the app is running
+  (verified twice, persist-checked after 8s). Deletes are still UI-owned; don't
+  fight that with an editor.
+- Two wizard quirks found by a human, not a script: the add/edit dialog **will not
+  let you change `host`** on an existing row (fill the other fields, or delete the
+  row and re-add cleanly), and the identity-file field **does not expand `~`** —
+  the tilde quietly resolves to nothing and the lane "rejects the key" when the
+  real problem was a missing file. Absolute paths, always.
+- **"Connect to Gateway at boot" stays OFF on anything that leaves the house.**
+  Persistent means silent reconnect loops toward a LAN address that, on the road,
+  isn't there. On-demand dialing — first bot click builds the tunnel in 10–20
+  seconds — is exactly the right behavior for a laptop that moves.
+- The pitfall from the other direction still bites: opening a remote row starts a
+  gateway on the *far* machine. Fine on an always-on workstation; on a shared or
+  deliberately-quiet box, check its design note before making it reachable.
+
+The part no doc covers is the trust shape, so here's the one we use: the losable
+machine holds **keys, not brains** — key-only SSH lanes minted on the device itself
+(the private half never left it), one cheap model key, and zero durable state. Its
+local session data gets pruned weekly by a job on the *home* side, so even weeks of
+travel leave no growing second memory anywhere. Loss procedure is four one-liners:
+delete its key line from each machine it could dial, rotate the model key it carries,
+remove its tailnet node. Rebuilding it is a wipe, a restore of config from backup,
+and re-adding those same two key lines. If losing the laptop would cost you a brain,
+you put the brain in the wrong machine.
